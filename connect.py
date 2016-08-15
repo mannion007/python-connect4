@@ -40,15 +40,22 @@ def move(col, char):
 
 def player_move():
 	valid = False
+	message = 'Player, choose a column...'
 
 	while not valid:
-		col = int(raw_input('Player, choose a column...'))
+		col = int(raw_input(message))
 		valid = col_valid(col)
+		message = 'Player, that choice is not valid. Please choose another column...'
 
 	move(col, player_char)
 
 def computer_move():
-	col = 0
+	valid = False
+
+	while not valid:
+		col = randint(0, board_width - 1)
+		valid = col_valid(col)
+
 	print('Computer chose column %s' % str(col))
 	move(col, computer_char)
 
